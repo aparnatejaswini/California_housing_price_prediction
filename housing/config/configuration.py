@@ -1,10 +1,9 @@
 from housing.entity.config_entity import *
 from housing.util import read_yaml_file
 from housing.logger import logging
-import os, sys
-from housing.constant import *
+from housing.constants import *
 from housing.exception import HousingException
-
+import os, sys
 
 
 class Configuration:
@@ -55,17 +54,29 @@ class Configuration:
                                              data_ingestion_info[DATA_INGESTION_TEST_DIR_KEY]
                                             )
 
-            data_ingestion_config = DataIngestionConfig(dataset_download_url=dataset_download_url,
+            data_ingestion_config = DataIngestionConfig(dataset_download_url=dataset_download_url, 
                                                         tgz_download_dir=raw_data_dir,
                                                         raw_data_dir=ingested_data_dir,
-                                                        ingested_train_dir=ingested_train_dir=,
+                                                        ingested_train_dir=ingested_train_dir,
                                                         ingested_test_dir=ingested_test_dir
                                                         )
+            logging.info(f"Data Ingestion config: {data_ingestion_config}")
+            return data_ingestion_config
+
         except Exception as e:
             raise HousingException(e, sys) from e
 
     def get_data_validation_config(self) -> DataValidationConfig:
-        pass
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            
+            data_validation_artifact_dir = os.path.join(artifact_dir,
+                                                        DATA_VALIDATION_ARTIFACT_DIR_NAME,
+                                                        CURRENT_TIME_STAMP
+                                                       )
+
+        except Exception as e:
+            raise HousingException(e, sys)
 
     def get_data_transformation_config(self) -> DataTransformationConfig:
         pass
@@ -73,7 +84,7 @@ class Configuration:
     def get_model_trainer(self) -> ModelTrainerConfig:
         pass
 
-    def get_model_evaluation_config(self) -> ModelValuationConfig:
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
         pass
 
     def get_model_pusher_config(self) -> ModelPusherConfig:
@@ -89,5 +100,6 @@ class Configuration:
             training_pipeline_config = TrainingPipelineConfig(artifact_dir=artifact_dir)
             logging.info(f"Training pipeline config: {training_pipeline_config}")
             return training_pipeline_config
+
         except Exception as e:
             raise HousingException(e,sys) from e

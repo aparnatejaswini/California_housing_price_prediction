@@ -1,0 +1,12 @@
+prefix=c:/Users/User/Desktop/2511/Machine Learning Algorithms/Projects/California_housing_price_prediction/housing_venv/Library
+exec_prefix=c:/Users/User/Desktop/2511/Machine Learning Algorithms/Projects/California_housing_price_prediction/housing_venv/Library
+libdir=c:/Users/User/Desktop/2511/Machine Learning Algorithms/Projects/California_housing_price_prediction/housing_venv/Library/lib
+includedir=c:/Users/User/Desktop/2511/Machine Learning Algorithms/Projects/California_housing_price_prediction/housing_venv/Library/include
+
+Name: libzmq
+Description: 0MQ c++ library
+Version: 4.3.4
+Libs: -L${libdir} -lzmq
+Libs.private: -lstdc++ 
+Requires.private: 
+Cflags: -I${includedir} 
