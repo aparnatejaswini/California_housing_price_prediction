@@ -5,3 +5,4 @@ sklearn
 gunicorn
 matplotlib
 PyYAML
+evidently
