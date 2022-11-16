@@ -1,8 +1,0 @@
-pandas
-numpy
-Flask
-sklearn
-gunicorn
-matplotlib
-PyYAML
-evidently
