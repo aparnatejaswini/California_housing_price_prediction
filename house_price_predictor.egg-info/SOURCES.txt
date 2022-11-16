@@ -16,6 +16,7 @@ housing/component/model_pusher.py
 housing/component/model_trainer.py
 housing/config/__init__.py
 housing/config/configuration.py
+housing/constants/__init__.py
 housing/entity/__init__.py
 housing/entity/artifact_entity.py
 housing/entity/config_entity.py

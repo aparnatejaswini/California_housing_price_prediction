@@ -6,3 +6,4 @@ gunicorn
 matplotlib
 PyYAML
 evidently
+dill
