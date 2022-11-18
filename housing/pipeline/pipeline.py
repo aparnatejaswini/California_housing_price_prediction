@@ -51,7 +51,13 @@ class Pipeline:
 
 
     def start_model_trainer(self):
-        pass
+        try:
+            model_trainer = ModelTrainer(model_trainer_config=self.config.get_model_trainer_config(),
+                                         data_transformation_artifact=data_transformation_artifact
+                                         )
+            return model_trainer.initiate_model_trainer()
+        except Exception as e:
+            raise HousingException(e, sys) from e
 
     def start_model_evaluation(self):
         pass
